@@ -67,10 +67,10 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant}: Props) => {
             return;
         }
 
-        const deliveryPriceFormatted = parseInt((restaurant.deliveryPrice /100).toFixed(2));
+        const deliveryPriceFormatted = parseInt((restaurant.deliveryPrice).toString());
         const menuItemsFormatted = restaurant.menuItems.map((item)=>({
             ...item,
-            price: parseInt((item.price/100).toFixed(2)),
+            price: parseInt((item.price).toString()),
         }));
 
         const updatedRestaurant = {
@@ -87,14 +87,14 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant}: Props) => {
         formData.append("restaurantName", formDataJson.restaurantName);
         formData.append("city", formDataJson.city);
         formData.append("country", formDataJson.country);
-        formData.append("deliveryPrice", (formDataJson.deliveryPrice * 100).toString());
+        formData.append("deliveryPrice", (formDataJson.deliveryPrice.toString()));
         formData.append("estimatedDeliveryTime", formDataJson.estimatedDeliveryTime.toString());
         formDataJson.cuisines.forEach((cuisine: string, index: number) => {
             formData.append(`cuisines[${index}]`,cuisine);
         });
         formDataJson.menuItems.forEach((menuItem: { name: string ; price: number; }, index: number) => {
             formData.append(`menuItems[${index}][name]`,menuItem.name);
-            formData.append(`menuItems[${index}][price]`, (menuItem.price *100).toString());
+            formData.append(`menuItems[${index}][price]`, (menuItem.price).toString());
         });
         
         if(formDataJson.imageFile) {

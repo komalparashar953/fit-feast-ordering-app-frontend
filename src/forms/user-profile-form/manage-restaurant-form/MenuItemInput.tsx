@@ -20,7 +20,7 @@ const MenuItemInput = ({index, removeMenuItem }: Props) => {
             </FormControl>
         </FormItem>)} />
         <FormField control={control} name={`menuItems.${index}.price`} render={({field}) => (<FormItem>
-            <FormLabel className="flex items-center gap-1">Price ($)<FormMessage /></FormLabel>
+            <FormLabel className="flex items-center gap-1">Price (₹)<FormMessage /></FormLabel>
             <FormControl>
                 <Input {...field} placeholder="8.00" className="bg-white"/>
             </FormControl>
